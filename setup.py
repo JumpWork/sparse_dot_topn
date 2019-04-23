@@ -1,6 +1,9 @@
 from os import path
-import numpy
 from setuptools import setup, Extension
+from setuptools import dist
+dist.Distribution().fetch_build_eggs(['Cython', 'numpy'])
+
+import numpy
 from Cython.Distutils import build_ext
 from Cython.Build import cythonize
 
@@ -39,4 +42,3 @@ setup(
     cmdclass={'build_ext': build_ext},
     ext_modules=cythonize([ext_utils]),
 )
-
